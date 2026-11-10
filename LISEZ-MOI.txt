@@ -43,3 +43,10 @@ votre téléphone ou votre ordinateur.
      Le gardien du temps passe à la question piège puis au bilan quand il le faut.
    · « Séance du jour » ouvre aussi la caméra et le micro : un seul geste.
    · Chaque étape dit pourquoi elle vient maintenant et annonce la suivante.
+
+6. NOUVEAUTÉS DE LA VERSION 11
+   · Vous vous voyez en parlant : colonne « Vous, en direct » sur ordinateur, aperçu sur
+     chaque carte de prise sur téléphone, vignette ailleurs.
+   · Test réel du micro à l'accueil : la barre de niveau bouge quand vous parlez, puis une
+     phrase d'essai est transcrite. Choix de la caméra et du micro si vous en avez plusieurs.
+   · Accueil recentré sur la séance du jour ; police de lecture plus nette.

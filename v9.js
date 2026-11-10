@@ -93,7 +93,7 @@ Studio.shut = function () {
 
 // Petite vignette de la caméra, en bas à droite
 const Pip = {
-  el: null, min: IS_MOBILE,
+  el: null, min: false,
   show() {
     if (!Studio.inPage || !Studio.stream || !Studio.stream.getVideoTracks().length) return;
     if (!this.el) {
