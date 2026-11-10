@@ -1,0 +1,16 @@
+{
+  "name": "Le Verbe Souverain",
+  "short_name": "Verbe Souverain",
+  "description": "Académie quotidienne de prise de parole : studio, évaluation automatique de la voix et du corps, vidéothèque annotée.",
+  "lang": "fr",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#EDEFF5",
+  "theme_color": "#283A9A",
+  "icons": [
+    { "src": "icons/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any maskable" },
+    { "src": "icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any maskable" }
+  ]
+}

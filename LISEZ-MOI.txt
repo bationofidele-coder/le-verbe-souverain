@@ -1,0 +1,45 @@
+LE VERBE SOUVERAIN · version autonome (v10)
+
+Ce dossier contient l'application complète. Elle fonctionne sans Claude et, une fois
+installée, sans Internet. Tout est analysé sur votre appareil : aucune vidéo ne quitte
+votre téléphone ou votre ordinateur.
+
+1. METTRE L'APPLICATION EN LIGNE (une seule fois, 3 minutes, gratuit)
+   Le navigateur n'autorise la caméra, l'installation et le mode hors ligne que sur une
+   adresse sécurisée (https). Le plus simple :
+   a. Ouvrez https://app.netlify.com/drop dans Chrome, sur ordinateur.
+   b. Glissez-déposez le dossier « le-verbe-souverain » entier dans la page.
+   c. Netlify affiche une adresse du type https://xxxx.netlify.app : c'est votre application.
+   d. Créez un compte gratuit si vous voulez garder cette adresse au-delà d'une heure.
+   Autres solutions équivalentes : GitHub Pages, Cloudflare Pages.
+
+2. L'INSTALLER SUR LE TÉLÉPHONE
+   Android (Chrome) : ouvrez l'adresse, puis menu ⋮ > « Installer l'application »
+   (ou le bouton « Installer l'application » dans la page).
+   iPhone (Safari) : ouvrez l'adresse, puis Partager > « Sur l'écran d'accueil ».
+   Ouvrez l'application une fois avec Internet et lancez une prise filmée : les modèles
+   d'analyse (environ 120 Mo) sont alors gardés sur le téléphone. Ensuite, plus besoin
+   de réseau.
+
+3. S'EN SERVIR
+   Séance du jour > à chaque prise, un seul bouton « Me filmer » : autorisation de la
+   caméra la première fois, cadrage guidé, compte à rebours, enregistrement, arrêt
+   automatique. La fiche sur six critères arrive ensuite (ancrage, diction, regard,
+   mots parasites, structure, expressivité).
+   Onglet « Vidéos » : revoir chaque prise avec ses moments annotés, comparer
+   avant/après, télécharger la vidéo, la fiche PDF, l'envoyer à un mentor.
+
+4. BON À SAVOIR
+   · Les mesures sont des repères automatiques, pas un jugement : un visage mal éclairé
+     ou à moitié hors cadre fausse le regard et l'ancrage.
+   · La transcription (Whisper base) se trompe parfois sur les noms propres.
+   · Ouvrir index.html en double-cliquant ne suffit pas : passez par l'adresse https.
+   · Vos vidéos restent dans ce navigateur. Exportez celles que vous voulez garder.
+
+5. NOUVEAUTÉS DE LA VERSION 10
+   · Une semaine se prépare seule dès que les cinq séances de la précédente sont faites
+     (douze semaines), avec une priorité tirée de vos fiches.
+   · Séance complète : 30 minutes au plus. Séance express : 10 minutes au plus.
+     Le gardien du temps passe à la question piège puis au bilan quand il le faut.
+   · « Séance du jour » ouvre aussi la caméra et le micro : un seul geste.
+   · Chaque étape dit pourquoi elle vient maintenant et annonce la suivante.
