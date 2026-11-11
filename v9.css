@@ -193,3 +193,36 @@ h1, h2, h3 { letter-spacing: 0; }
   #v9-pip { display: none; }
 }
 @media (min-width: 1024px) { .sess-top .sess-title b { font-size: 1.2rem; } .cardx { padding: 22px 26px 26px; } }
+
+/* ===== v12 : consignes, protocole, débrief, vidéos ===== */
+.v12-consigne { margin: 8px 0 12px; padding: 12px 14px; border-radius: 14px; background: var(--indigo-soft); text-align: left; }
+.v12-consigne p { margin: 4px 0; } .v12-consigne .eyebrow { margin-bottom: 2px; }
+.v12-consigne.compact p:not(:first-of-type) { font-size: .92rem; }
+.v12-replay { display: flex; justify-content: flex-end; margin: 0 0 6px; }
+.v12-done { margin: 10px 0; padding: 12px 14px; border-radius: 14px; background: color-mix(in srgb, var(--ok) 12%, var(--surface)); color: var(--ok); font-weight: 600; display: flex; flex-direction: column; gap: 2px; }
+.v12-done span { color: var(--muted); font-weight: 400; font-size: .88rem; }
+.v12-cons { font-size: 1.05rem; line-height: 1.5; max-width: 40ch; margin: 8px auto 16px; text-align: left; }
+#run.consigne { background: var(--indigo-soft); } #run.count { background: var(--ochre-soft); } #run.pause { background: color-mix(in srgb, var(--ok) 10%, var(--bg)); }
+#run.count .run-t { color: var(--ochre); }
+#run .run-t.pop { animation: rsPop .9s ease-out; }
+.run-top.ok { color: var(--ok); }
+.rec-dot { color: var(--bad); }
+.rs-brief { background: #141A2E; border-radius: 14px; padding: 12px 14px; color: #E7E9F4; }
+.rs-brief .eyebrow { color: #EDB55E; margin-bottom: 2px; } .rs-brief b { font: 400 1.15rem var(--disp); }
+.rs-brief p { margin: 6px 0 0; font-size: .95rem; line-height: 1.45; } .rs-brief .small { color: #9AA1C1; }
+.v12-struct { margin: 10px 0; padding: 10px 14px; border: 1px solid var(--line); border-radius: 14px; background: var(--surface); }
+.v12-struct summary { display: flex; justify-content: space-between; align-items: center; cursor: pointer; list-style: none; }
+.v12-struct summary::-webkit-details-marker { display: none; } .v12-struct summary .eyebrow { margin: 0; }
+.v12-struct ol { margin: 8px 0 6px; padding-left: 18px; display: grid; gap: 4px; } .v12-struct ol li { font-size: .95rem; }
+.v12-struct ol b { font-weight: 600; } .v12-struct .small { color: var(--muted); margin: 4px 0 0; }
+.v12-video { display: block; position: relative; border-radius: 16px; overflow: hidden; background: #0B0E1C; margin: 10px 0; aspect-ratio: 16/9; text-decoration: none; }
+.v12-video img { width: 100%; height: 100%; object-fit: cover; display: block; opacity: .92; }
+.v12-video span { position: absolute; left: 12px; bottom: 10px; right: 12px; color: #fff; font-weight: 600; text-shadow: 0 1px 4px #000; }
+.v12-novid { display: grid; place-items: center; height: 100%; color: #9AA1C1; }
+.v12-debrief { display: grid; gap: 10px; margin: 10px 0; }
+.v12-debrief section { padding: 12px 14px; border-radius: 14px; background: var(--surface); border: 1px solid var(--line); }
+.v12-debrief section p { margin: 4px 0 0; line-height: 1.5; }
+.v12-biblio { list-style: none; margin: 6px 0 0; padding: 0; display: grid; gap: 10px; }
+.v12-biblio li { display: grid; gap: 2px; } .v12-biblio li span { color: var(--muted); font-size: .9rem; }
+.v12-biblio a { color: var(--indigo); text-decoration: none; }
+.mots3 em { display: block; font-style: italic; margin-top: 2px; }

@@ -50,3 +50,20 @@ votre téléphone ou votre ordinateur.
    · Test réel du micro à l'accueil : la barre de niveau bouge quand vous parlez, puis une
      phrase d'essai est transcrite. Choix de la caméra et du micro si vous en avez plusieurs.
    · Accueil recentré sur la séance du jour ; police de lecture plus nette.
+
+7. NOUVEAUTÉS DE LA VERSION 12
+   · La voix du coach est la voix française de votre appareil (naturelle). Sur le S24,
+     choisissez « Google français » dans la carte « La voix du coach » de l'accueil ;
+     sur Windows, « Hortense » ou « Julie ». La voix enregistrée reste disponible.
+   · Chaque exercice commence par une consigne complète, parlée et réécoutable
+     (bouton « Réécouter la consigne » sur chaque carte).
+   · Protocole de chaque enregistrement : consigne, compte à rebours de 5 à 0,
+     enregistrement, « Continuer ». L'évaluation est gardée pour le débrief.
+   · Le débrief parlé (3 à 5 minutes) précède le bilan : erreurs, points faibles,
+     corrections, marche à suivre, prise par prise.
+   · La charpente souveraine (accroche, annonce, développement, chute) est rappelée
+     avec un exemple avant chaque prise de parole.
+   · La Forge est réorganisée : écouter, compte à rebours, trois répétitions en une prise.
+   · Quarante vidéos de maîtres en français (Périer, Viktorovitch, Valstar, Sommer…),
+     une par séance, suivie d'un bilan parlé de trente secondes.
+   · Ressources > Bibliothèque : les meilleures références, d'Aristote aux coachs actuels.
