@@ -67,3 +67,16 @@ votre téléphone ou votre ordinateur.
    · Quarante vidéos de maîtres en français (Périer, Viktorovitch, Valstar, Sommer…),
      une par séance, suivie d'un bilan parlé de trente secondes.
    · Ressources > Bibliothèque : les meilleures références, d'Aristote aux coachs actuels.
+
+8. NOUVEAUTÉS DE LA VERSION 13
+   · Plus aucun écran figé : la transcription tourne sur un fil séparé, et toute
+     évaluation se fait en arrière-plan. Vous ne voyez plus « J'écoute… ».
+   · Chaque exercice : la consigne est dite à l'arrivée, puis vous touchez « Démarrer ».
+     Compte à rebours de 5 à 0, enregistreur rouge bien visible avec la barre du micro,
+     puis passage automatique à la prise suivante et à l'exercice suivant.
+   · Un fil conducteur relie chaque étape au sujet du jour : souffle, voix, vidéo de
+     maître, mots, mémoire, exercice ciblé, prise, deuxième prise, question, débrief.
+   · Le minuteur d'étape ne vous pousse plus dehors : seul compte le temps total.
+   · Voix plus douce : phrases courtes, débit réglable (accueil, « La voix du coach »).
+   · Mise à jour automatique : l'application se met à jour d'elle-même, sur ordinateur
+     et sur le S24, entre deux séances (jamais pendant une séance).

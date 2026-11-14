@@ -298,8 +298,10 @@ function debriefOf(c) {
   add("Ouverture", "Débrief de la séance " + c.n + ", " + P.t + ". Voici ce que j’ai mesuré, ce qui est à corriger, et comment.");
   // Forge
   if (r.forge && r.forge.acc != null) {
-    const a = Math.round(r.forge.acc * 100), weak = (r.forge.weak || []).map(i => VIRE10[i]);
-    add("La voix et la diction", "Forge : " + a + " % de mots nets et complets. " + (a >= 85 ? "Articulation solide." : a >= 65 ? "Articulation correcte, mais des consonnes finales sont avalées." : "Articulation à travailler : beaucoup de syllabes se perdent, surtout en vitesse.") + (weak.length ? " Phrases à reprendre : " + weak.join(" ; ") + "." : "") + (r.forge.miss && r.forge.miss.length ? " Mots déformés : " + r.forge.miss.join(", ") + "." : "") + " Correction : reprenez la phrase la plus faible, lentement, en exagérant les consonnes, puis accélérez par paliers.");
+    const a = Math.round(r.forge.acc * 100), weak = (r.forge.weak || []).map(i => VIRE10[i].replace(/[\s.!?…]+$/, ""));
+    const orig = {}; (r.forge.weak || []).concat(vireOfDay(P.d)).forEach(i => String(VIRE10[i] || "").split(/[\s’',.;:!?«»-]+/).forEach(w => { if (w) orig[norm(w)] = w.toLowerCase(); }));
+    const missW = (r.forge.miss || []).map(w => orig[norm(w)] || w);
+    add("La voix et la diction", "Forge : " + a + " % de mots nets et complets. " + (a >= 85 ? "Articulation solide." : a >= 65 ? "Articulation correcte, mais des consonnes finales sont avalées." : "Articulation à travailler : beaucoup de syllabes se perdent, surtout en vitesse.") + (weak.length ? " Phrases à reprendre : « " + weak.join(" », « ") + " »." : "") + (missW.length ? " Mots déformés : " + missW.join(", ") + "." : "") + " Correction : reprenez la phrase la plus faible, lentement, en exagérant les consonnes, puis accélérez par paliers.");
   } else if (r.forge && r.forge.noEval) add("La voix et la diction", "Forge faite sans enregistrement : je n’ai pas pu mesurer la diction aujourd’hui.");
   // Mots
   if (r.mots3 && r.mots3.m && Object.keys(r.mots3.m).length) {
@@ -354,7 +356,7 @@ buildCards = function (c) {
   return out;
 };
 // Charpente rappelée, avec exemple, sur chaque carte de prise de parole
-const STRUCT_HTML = track => '<details class="v12-struct" open><summary><span class="eyebrow">' + esc(X.STRUCTURE.t) + '</span><button class="btn ghost sm" data-act="v12-say-struct" data-track="' + esc(track) + '">Écouter</button></summary><ol>' + X.STRUCTURE.steps.map(s => '<li><b>' + esc(s[0]) + '</b> ' + esc(s[1]) + '</li>').join("") + '</ol><p class="small">' + esc(X.STRUCTURE.ex[track] || X.STRUCTURE.ex.ouvrir) + '</p></details>';
+const STRUCT_HTML = track => '<details class="v12-struct" open><summary><span class="eyebrow">' + esc(X.STRUCTURE.t) + '</span><button class="btn ghost sm" data-act="v12-say-struct" data-track="' + esc(track) + '">Écouter</button></summary><ol>' + X.STRUCTURE.steps.map(s => '<li><b>' + esc(s[0]) + '</b> ' + esc(s[1]) + '</li>').join("") + '</ol><details class="v12-ex"><summary>Voir l’exemple</summary><p class="small">' + esc(X.STRUCTURE.ex[track] || X.STRUCTURE.ex.ouvrir) + '</p></details></details>';
 const _vs12 = viewSession;
 viewSession = function () {
   const c = S.cur; let h = _vs12();

@@ -226,3 +226,28 @@ h1, h2, h3 { letter-spacing: 0; }
 .v12-biblio li { display: grid; gap: 2px; } .v12-biblio li span { color: var(--muted); font-size: .9rem; }
 .v12-biblio a { color: var(--indigo); text-decoration: none; }
 .mots3 em { display: block; font-style: italic; margin-top: 2px; }
+
+/* ===== v13 : fluidité, enregistreur visible, enchaînement ===== */
+.timers { grid-template-columns: 1fr !important; } .timers > div:first-child { display: none !important; }
+#grace { display: none !important; } #card-bar { display: none; }
+#v13-flow { position: fixed; left: 50%; transform: translateX(-50%); bottom: calc(18px + env(safe-area-inset-bottom, 0px)); z-index: 40; width: min(560px, calc(100% - 24px)); background: var(--ink); color: var(--bg); border-radius: 16px; padding: 12px 14px; box-shadow: 0 10px 30px rgba(10, 14, 40, .3); display: grid; gap: 8px; }
+#v13-flow[hidden] { display: none; }
+#v13-flow .btn { min-height: 38px; } #v13-flow .btn.ghost { color: var(--bg); border-color: color-mix(in srgb, var(--bg) 40%, transparent); }
+.v13-rec { display: grid; justify-items: center; gap: 6px; margin: 0 auto 14px; padding: 12px 16px; border-radius: 16px; background: color-mix(in srgb, var(--bad) 12%, var(--surface)); border: 2px solid var(--bad); max-width: 380px; }
+.v13-rec b { color: var(--bad); font-size: 1.05rem; letter-spacing: .02em; }
+.v13-rec small { color: var(--muted); }
+.v13-rec.off { border-color: var(--warn); background: var(--ochre-soft); } .v13-rec.off b { color: var(--warn); }
+.v13-dot { width: 18px; height: 18px; border-radius: 50%; background: var(--bad); animation: v13pulse 1.1s ease-in-out infinite; }
+@keyframes v13pulse { 0%, 100% { transform: scale(1); opacity: 1; } 50% { transform: scale(1.35); opacity: .55; } }
+.v13-vu { position: relative; width: 100%; height: 12px; border-radius: 8px; background: var(--sunk); overflow: hidden; }
+.v13-vu i { display: block; height: 100%; width: 0; border-radius: 8px; background: var(--ok); transition: width .08s linear; }
+.v13-ready { font-weight: 600; color: var(--ochre); margin-bottom: 6px; }
+.v13-ok { width: 72px; height: 72px; margin: 0 auto 6px; border-radius: 50%; display: grid; place-items: center; background: var(--ok); color: #fff; font-size: 2.4rem; }
+.v13-ver { margin: 18px 0 0; }
+.rs-brief.small p { display: none; }
+@media (prefers-reduced-motion: reduce) { .v13-dot { animation: none; } }
+
+#run .run-in { max-width: min(560px, 100%); box-sizing: border-box; padding: 0 4px; }
+#run .run-lab, #run .run-txt { overflow-wrap: anywhere; max-width: 100%; }
+.v13-rec { width: 100%; box-sizing: border-box; }
+.v12-ex summary { cursor: pointer; color: var(--indigo); font-size: .9rem; margin-top: 4px; }
