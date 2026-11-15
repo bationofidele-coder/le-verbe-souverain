@@ -80,3 +80,22 @@ votre téléphone ou votre ordinateur.
    · Voix plus douce : phrases courtes, débit réglable (accueil, « La voix du coach »).
    · Mise à jour automatique : l'application se met à jour d'elle-même, sur ordinateur
      et sur le S24, entre deux séances (jamais pendant une séance).
+
+9. NOUVEAUTÉS DE LA VERSION 14
+   · Séance façon leçon courte : chaque étape tient en une icône, un titre et une ligne.
+     Le détail est replié dans « Plus d'aide ».
+   · Le bouton principal est toujours en bas de l'écran : plus besoin de défiler.
+   · Plus de compte à rebours : « Démarrer » lance l'enregistrement tout de suite.
+   · Respiration : vidéo « Technique 4-4-8 » (Respire avec Tom & Inga), 3 min 30 au plus.
+     Hors connexion, la respiration guidée à l'écran prend le relais.
+   · Nouveau : « Réveiller le visage », 1 min 30 (vidéo de Mélissa B, puis cinq gestes
+     guidés : joues, mâchoire, lèvres, langue, sourire).
+   · Une seule phrase parlée par étape, plus de musique de fond pendant la séance.
+   · À la fin d'un exercice : « Bien joué ! », puis la suite en 2,5 secondes.
+   · Exercice ciblé : votre sujet et un exemple sont affichés ; chaque temps de
+     l'exercice montre un repère à l'écran.
+   · Durées : séance complète 28 à 30 minutes ; express 9 min 45 (respiration, visage,
+     prise filmée, débrief, bilan).
+   · Voix la plus naturelle : sur ordinateur, ouvrez l'application avec Microsoft Edge
+     (voix « Vivienne » ou « Denise ») ; sur le S24, moteur de synthèse Google, voix
+     Français (France) en haute qualité.

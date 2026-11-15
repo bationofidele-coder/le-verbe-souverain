@@ -10,7 +10,7 @@
 (function () {
 "use strict";
 const V9 = window.V9, X = window.V12C;
-const APP_VERSION = "13.0";
+const APP_VERSION = "14.0";
 V9.version = APP_VERSION;
 const pref = { get: k => { try { return localStorage.getItem("vs1:" + k) || ""; } catch (e) { return ""; } }, set: (k, v) => { try { localStorage.setItem("vs1:" + k, v || ""); } catch (e) { } } };
 S.v13 = S.v13 || { silent: false, onDebrief: false, cohUser: false };
@@ -97,7 +97,7 @@ TTS.pick = function () {
     PREF_NAMES.map(re => ff.find(v => re.test(v.name)) || vs.find(v => re.test(v.name))).find(Boolean) || ff[0] || vs[0] || null;
 };
 try { TTS.pick(); speechSynthesis.onvoiceschanged = () => TTS.pick(); } catch (e) { }
-const RATE = () => Number(pref.get("ttsrate")) || 0.92;
+const RATE = () => Number(pref.get("ttsrate")) || 1;
 let keep = null;
 TTS.speak = function (text, rate, onend) {
   if (S.v13.silent) { setTimeout(() => onend && onend(), 1200); return true; }
@@ -358,7 +358,7 @@ document.addEventListener("change", e => { const el = e.target; if (el.dataset &
 const _home13 = viewHome;
 viewHome = function () {
   let h = _home13();
-  if (S.v12 && S.v12.voiceOpen) { const r = String(RATE()); h = h.replace('<p class="small muted">Sur le S24', '<div class="v11-devs"><label>Débit de la voix<select data-v13="ttsrate">' + [["0.85", "Très doux"], ["0.92", "Doux (recommandé)"], ["1", "Naturel"], ["1.08", "Vif"]].map(([v, l]) => '<option value="' + v + '"' + (r === v ? " selected" : "") + '>' + l + '</option>').join("") + '</select></label></div><p class="small muted">Sur le S24'); }
+  if (S.v12 && S.v12.voiceOpen) { const r = String(RATE()); h = h.replace('<p class="small muted">Sur le S24', '<div class="v11-devs"><label>Débit de la voix<select data-v13="ttsrate">' + [["0.85", "Très doux"], ["0.92", "Doux"], ["1", "Naturel (recommandé)"], ["1.08", "Vif"]].map(([v, l]) => '<option value="' + v + '"' + (r === v ? " selected" : "") + '>' + l + '</option>').join("") + '</select></label></div><p class="small muted">Sur le S24'); }
   h += '<p class="v13-ver small muted center">Version ' + APP_VERSION + (navigator.serviceWorker && navigator.serviceWorker.controller ? " · mise à jour automatique active" : "") + '</p>';
   return h;
 };
