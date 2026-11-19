@@ -99,3 +99,27 @@ votre téléphone ou votre ordinateur.
    · Voix la plus naturelle : sur ordinateur, ouvrez l'application avec Microsoft Edge
      (voix « Vivienne » ou « Denise ») ; sur le S24, moteur de synthèse Google, voix
      Français (France) en haute qualité.
+
+10. NOUVEAUTÉS DE LA VERSION 15 : UN VRAI COACH
+   · Ouvrez l'application dans Claude (lien de l'artefact) : Claude devient votre coach.
+     Il prépare chaque séance, vous écoute, vous corrige partie par partie et vous
+     propose « Dites plutôt… ». Voix Claude naturelle et transcription instantanée.
+   · Séance de 30 minutes : échauffement de 9 minutes (respiration 3 min 30, visage
+     1 min 30, 10 virelangues répétés 3 fois), puis 3 blocs de 6 minutes, puis un
+     bilan de 90 secondes.
+   · Chaque bloc : APPRENDRE (la compétence en grand, la méthode, ce que dit la
+     recherche), VOIR (le coach montre comment aborder le sujet), FAIRE, CORRIGER,
+     REFAIRE.
+   · Quatre méthodes de discours : PREP ; Problème-Solution-Action ; Récit en 5 temps ;
+     Thèse-Antithèse-Synthèse. Et leur application à l'entretien d'embauche
+     (« Présentez-vous », « Pourquoi vous ? », « Pourquoi avez-vous postulé ? »…).
+   · La semaine : lundi PREP, mémoire, vocabulaire · mardi Problème-Solution-Action,
+     corps et regard, culture générale · mercredi récit, négociation, voix et silences ·
+     jeudi Thèse-Antithèse-Synthèse, improvisation, attention · vendredi entretien,
+     trac sous pression, rappel de la semaine.
+   · Mémoire : méthode des lieux (Dresler et al., 2017) et tâche n-back (Jaeggi et al.,
+     2008), avec niveau qui s'adapte. Vocabulaire : mots forts à charge politique,
+     revus en rappel (effet de test). Négociation : dialogue avec un interlocuteur
+     joué par Claude (méthode de Harvard).
+   · Hors de Claude, l'application fonctionne avec des contenus intégrés et une
+     correction automatique plus simple.

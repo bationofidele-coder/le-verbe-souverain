@@ -553,7 +553,7 @@ buildCards = function (c) {
   keep.forEach(x => { if (x.k === "forge") { x.n = 10; x.sec = 250; x.t = "La Forge · 10 virelangues"; } if (x.k === "souffle") x.sec = c.express ? 95 : 215; if (x.k === "visage") x.sec = c.express ? 50 : 90; });
   const out = keep.slice();
   plan(c).forEach(([kind, m], bi) => { const sk = K.SK[kind]; out.push({ k: "blk", B: "E", act: 2, bi, kind, m, sec: c.express ? 150 : 360, t: sk.t.charAt(0) + sk.t.slice(1).toLowerCase() }); });
-  out.push({ k: "fin", B: "F", act: 3, sec: c.express ? 45 : 90, t: "Bilan" });
+  out.push({ k: "fin", B: "F", act: 3, sec: c.express ? 40 : 90, t: "Bilan" });
   return out;
 };
 // En express : respiration et visage raccourcis
@@ -664,7 +664,7 @@ viewHome = function () {
   const today = (() => { try { const nx = typeof nextSession === "function" ? nextSession() : null; return nx && nx.d ? nx.d : 0; } catch (e) { return 0; } })();
   const wk = '<section class="card v15-week"><div class="eyebrow">Votre semaine</div><ol>' + [1, 2, 3, 4, 5].map(d => '<li class="' + (d === today ? "on" : "") + '"><b>' + DAYN[d - 1] + '</b><span>' + K.WEEK_PLAN[d].map(([k, m]) => k === "methode" ? K.M[m].t : K.SK[k].t.charAt(0) + K.SK[k].t.slice(1).toLowerCase()).join(" · ") + '</span></li>').join("") + '</ol><p class="small muted">Chaque séance : échauffement (souffle, visage, 10 virelangues × 3) puis trois blocs de 6 minutes et un bilan de 90 secondes.</p></section>';
   const vc = '<section class="card v15-voice"><div class="eyebrow">La voix du coach</div><div class="v15-vopts">' + VOICES.filter(v => v[0] === "device" || C.tts).map(v => '<button class="' + (voiceName() === v[0] || (!C.tts && v[0] === "device") ? "on" : "") + '" data-act="v15-voice" data-v="' + v[0] + '">' + esc(v[1]) + '</button>').join("") + '</div><p class="small muted">' + (C.tts ? "Voix Claude active : la plus naturelle." : esc(V9.voiceTip ? V9.voiceTip() || "Voix de l’appareil." : "Voix de l’appareil.")) + (coachIA() ? " · Coach Claude actif." : " · Pour un coach qui vous corrige vraiment, ouvrez l’application dans Claude.") + '</p></section>';
-  h = h.replace(/(<p class="v13-ver[^>]*>)/, wk + vc + "$1").replace(/Version 1[34]\.0/, "Version " + APP);
+  h = h.replace(/<section class="card v12-voice">[\s\S]*?<\/section>/, "").replace(/(<p class="v13-ver[^>]*>)/, wk + vc + "$1").replace(/Version 1[34]\.0/, "Version " + APP);
   return h;
 };
 render();
