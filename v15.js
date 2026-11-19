@@ -110,9 +110,12 @@ async function REC(o) {
   if (mode === "video") {
     const id = o.id, r = R(id); r.media = null; r.text = null; r.grid = null;
     V9.v15rs = { subj: o.subj || "", parts: o.parts || [] };
+    RS._v15stop = false;
     await RS.open(id, o.sec, o.title || "Ma prise");
     while (RS.on) await wait(300);
     const dt = await Dict.end();
+    // La prise arrive un peu après la fermeture de la scène : on l'attend si l'orateur a terminé
+    if (RS._v15stop) { const t1 = Date.now(); while (!r.media && Date.now() - t1 < 20000) await wait(300); }
     if (!r.media) return { cancelled: true };
     const t0 = Date.now(), needBody = !!o.body;
     while (Date.now() - t0 < 120000) {
@@ -172,7 +175,7 @@ function localFeedback(b, text, extra) {
   const ps = parts.map(n => ({ n, ok: CUES[n] ? CUES[n].test(t) : w > 25, note: CUES[n] ? (CUES[n].test(t) ? "repérée" : "non repérée") : "" }));
   const okN = ps.filter(p => p.ok).length, miss = ps.find(p => !p.ok);
   const score = clamp(Math.round((parts.length ? okN / parts.length * 6 : 4) + Math.min(3, w / 40) - Math.min(3, eu / 2) + 1), 0, 10);
-  const corr = !w ? "Je n’ai rien entendu : vérifiez le micro, puis parlez plus près." : miss ? "Ajoutez clairement la partie « " + miss.n + " » : " + ((b.spec.parts(b).find(p => p[0] === miss.n) || [])[2] || "annoncez-la") : eu > 2 ? "Remplacez chaque « euh » par un silence." : "Gardez cette structure et ralentissez sur la phrase clé.";
+  const corr = !w ? "Je n’ai rien entendu : vérifiez le micro, puis parlez plus près." : miss ? (((b.spec.parts(b).find(p => p[0] === miss.n) || [])[2]) ? "Ajoutez clairement la partie « " + miss.n + " » : " + b.spec.parts(b).find(p => p[0] === miss.n)[2] : "Travaillez d’abord ce point : « " + miss.n + " ».") : eu > 2 ? "Remplacez chaque « euh » par un silence." : "Gardez cette structure et ralentissez sur la phrase clé.";
   return { score, verdict: w ? (okN === parts.length ? "La structure est là." : okN + " parties sur " + parts.length + " repérées.") : "Aucune parole détectée.", parties: ps, force: w > 30 ? "Vous avez tenu la durée." : "Vous avez osé vous lancer.", corriger: corr, dites: "", dire: (w ? "Bien. " : "") + corr, local: true };
 }
 async function feedback(b, text, extra, second) {
@@ -313,7 +316,7 @@ const SPEC = {
     fbCtx: b => "l’orateur devait employer ces mots dans des phrases engagées : " + cont(b.c, "vocab").mots.map(w => w.m + " (" + w.def + ")").join(" ; ") + ". Pour chaque mot (une partie par mot), dis s’il est employé avec le bon sens et propose une phrase plus percutante dans « dites »."
   },
   voix: {
-    title: () => "Voix et silences", line: () => "Pauses, accents, variations : la voix qui porte.",
+    title: () => "Lire comme un orateur", line: () => "Pauses, accents, variations : la voix qui porte.",
     parts: () => [["Pauses"], ["Accents"], ["Débit"], ["Fidélité au texte"]],
     learn: b => { const x = cont(b.c, "voix"); return '<ol class="v15-plan">' + [["La pause", "« / » : une respiration. « // » : un vrai silence, une seconde."], ["L’accent", "Les mots en gras : plus lents, plus forts, plus graves."], ["La variation", "Montez sur la question, descendez sur la conclusion."]].map((s, i) => '<li><span class="n">' + (i + 1) + '</span><div><b>' + fr(s[0]) + '</b><p>' + fr(s[1]) + '</p></div></li>').join("") + '</ol><blockquote class="v15-text" data-hl="v0">' + voiceHtml(x.x) + '<cite>' + fr(x.a) + '</cite></blockquote>' + litBox(K.SK.voix.lit); },
     intro: b => { const x = cont(b.c, "voix"); return [{ text: "Voix et silences. Écoutez d’abord le texte, avec ses pauses et ses accents." }, { text: x.x.replace(/\/\//g, "…").replace(/\//g, ",").replace(/\*/g, ""), id: "v0" }, { text: "À vous : lisez-le en respectant chaque pause. Touchez Démarrer." }]; },
@@ -330,7 +333,7 @@ const SPEC = {
     fbCtx: b => "trois improvisations de 40 secondes sur : " + cont(b.c, "impro").sujets.slice(0, 3).join(", ") + ". Règle : idée maîtresse dans la première phrase, trois points annoncés, une chute courte."
   },
   nego: {
-    title: () => "Négociation", line: c => cont(c, "nego").ctx,
+    title: () => "La méthode de Harvard", line: c => cont(c, "nego").ctx,
     parts: () => [["Intérêts plutôt que positions"], ["Questions ouvertes"], ["Options"], ["Relation préservée"]],
     learn: b => { const x = cont(b.c, "nego"); return subjBox("La situation", x.ctx) + '<div class="v15-subj alt"><span>Votre objectif</span><b>' + fr(x.goal) + '</b></div><ol class="v15-plan">' + [["Écouter et reconnaître", "« Je comprends votre contrainte… »"], ["Chercher l’intérêt", "Une question ouverte : « Qu’est-ce qui compte le plus pour vous ? »"], ["Proposer deux options", "« Je vois deux pistes : … ou … »"], ["Préserver la relation", "Fermeté sur le fond, douceur avec la personne."]].map((s, i) => '<li data-hl="n' + i + '"><span class="n">' + (i + 1) + '</span><div><b>' + fr(s[0]) + '</b><p>' + fr(s[1]) + '</p></div></li>').join("") + '</ol>' + litBox(K.SK.nego.lit); },
     intro: b => { const x = cont(b.c, "nego"); return [{ text: "Négociation. " + x.ctx + " Votre objectif : " + x.goal }, { text: "La méthode de Harvard, en quatre gestes : reconnaître, chercher l’intérêt par une question ouverte, proposer deux options, préserver la relation.", id: "n1" }, { text: "Je joue votre interlocuteur. Trois échanges. Touchez Démarrer." }]; },
@@ -609,6 +612,8 @@ startSession = async function () { const r = await _ss15.apply(this, arguments);
 const F = V9.Flow, _after15 = F.after.bind(F);
 F.after = function (ms) { const x = curBlk(); if (x && x.r.ph !== "done") return; const c = S.cur; if (c && inPack(c)) { const cd = buildCards(c)[c.card || 0]; if (cd && cd.k === "fin") return; } return _after15(ms); };
 // Pendant un enregistrement filmé de bloc : le sujet et les parties sous l'image
+const _rss15 = RS.stop.bind(RS);
+RS.stop = function () { if (this.phase === "rec" && String(this.id || "").startsWith("v15")) this._v15stop = true; return _rss15.apply(this, arguments); };
 const _rsb15 = RS.begin.bind(RS);
 RS.begin = function () { _rsb15(); if (!String(this.id || "").startsWith("v15") || !V9.v15rs) return; const d = $("#v9-stage .v14-rs"); const x = V9.v15rs; const html = (x.subj ? '<p><b>Sujet</b> ' + esc(x.subj) + '</p>' : "") + (x.parts.length ? '<div class="v14-steps mini" style="grid-template-columns:repeat(' + Math.min(6, x.parts.length) + ',1fr)">' + x.parts.map((p, i) => '<span><b>' + (i + 1) + '</b>' + esc(p) + '</span>').join("") + '</div>' : ""); if (d) d.innerHTML = html; else { const inn = $("#v9-stage .rs-in"); if (inn) { const e = document.createElement("div"); e.className = "v14-rs"; e.innerHTML = html; inn.insertBefore(e, inn.querySelector("#rs-checks")); } } };
 // Les prises de bloc ne vont pas dans la vidéothèque des séances : elles y vont, mais sans bloquer la suite
