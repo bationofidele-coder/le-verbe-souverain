@@ -291,7 +291,7 @@ const _vs14 = viewSession;
 viewSession = function () {
   let h = _vs14(); const x = cur(); if (!x || x.c.bilan) return h;
   h = h.replace(/<div class="v12-replay">[\s\S]*?<\/div>(?=<div class="cardx)/, "").replace(/<p class="v10-bridge">[\s\S]*?<\/p>/g, "");
-  h = h.replace(/(<div class="cardx[^"]*" data-k="[^"]*">)/, "$1" + lead(x.cd, x.c));
+  if (x.cd.k !== "blk" && x.cd.k !== "fin") h = h.replace(/(<div class="cardx[^"]*" data-k="[^"]*">)/, "$1" + lead(x.cd, x.c));
   h = h.replace(/<details class="v12-struct" open>[\s\S]*?<\/details><\/details>/, STRUCT(x.c.info.pack.track));
   return h;
 };
@@ -309,11 +309,11 @@ function tidy() {
   // Le bouton principal descend dans la barre du bas
   const done = !!cx.querySelector(".v12-done");
   const prim = cx.querySelector(".v14-prim") || cx.querySelector(".sbox2 .big-act") || cx.querySelector('[data-act="v13-span"], [data-act="v13-rap-show"]') || cx.querySelector(".big-act2");
-  const redo = prim && /Recommencer|Refaire|Relancer|refilmer/i.test(prim.textContent);
+  const redo = prim && !prim.dataset.keep && /Recommencer|Refaire|Relancer|refilmer/i.test(prim.textContent);
   nav.classList.remove("flow"); nav.classList.add("v14-bar");
   const next = nav.querySelector('[data-act="cnext"]'), prev = nav.querySelector('[data-act="cprev"]');
   if (prim && !done && !redo && !Coh.on) {
-    if (x.cd.k !== "studio" && x.cd.k !== "rappel") {
+    if (x.cd.k !== "studio" && x.cd.k !== "rappel" && !prim.dataset.keep) {
       const sp = prim.querySelector("span:last-child"), tgt = sp && prim.querySelector("svg") ? sp : prim;
       const t = tgt.textContent.replace(/^[▶\s]+/, "").trim();
       tgt.textContent = /je me filme/i.test(t) ? "Démarrer" : /ce que je retiens|Regarder/i.test(t) ? t : "Démarrer";
